@@ -1,4 +1,4 @@
-﻿angular.module('dressingApp', ['ionic'])
+﻿angular.module('app', ['ionic', 'app.outfits'])
     .config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider

@@ -12,31 +12,31 @@
         -->
         <!-- ionic/angularjs js -->
         <script src="assets/ionic-1.0.0-rc.5/release/js/ionic.bundle.min.js"></script>
+        <script src="assets/app/outfits/outfits-module.js"></script>
         <script src="assets/app/app.js"></script>
     </head>
 
-    <body ng-app="dressingApp">
+    <body ng-app="app">
         <ion-pane>
-            <ion-header-bar class="bar-royal">
-                <h1 class="title">Dressing App</h1>
-            </ion-header-bar>
+            <ion-nav-bar class="bar-royal">
+                <ion-nav-back-button>
+                </ion-nav-back-button>
+            </ion-nav-bar>
             <ion-nav-view></ion-nav-view>
-            <ion-content class="has-header">
-            </ion-content>
         </ion-pane>
     </body>
 <script id="templates/tabs.html" type="text/ng-template">
     <ion-tabs class="tabs-icon-top tabs-royal">
 
-        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+        <ion-tab title="Home" icon="ion-home" ui-sref="tabs.home">
             <ion-nav-view name="home-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Outfit" icon="ion-home" href="#/tab/outfits">
-            <ion-nav-view name="home-tab"></ion-nav-view>
+        <ion-tab title="Outfits" icon="ion-home" ui-sref="tabs.outfits">
+            <ion-nav-view name="outfits-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Items" icon="ion-ios-information" href="#/tab/items">
+        <ion-tab title="Items" icon="ion-ios-information" href="tabs.outfits">
             <ion-nav-view name="about-tab"></ion-nav-view>
         </ion-tab>
 
@@ -47,8 +47,29 @@
     <ion-view view-title="Home">
         <ion-content class="padding">
             <p>
-                <a class="button icon icon-right ion-chevron-right" href="#/tab/facts">Choose today's outfit</a>
+                <a class="button icon icon-right ion-chevron-right" ui-sref="tabs.outfits">Outfits</a>
             </p>
+            <p>
+                <a class="button icon icon-right ion-chevron-right" ui-sref="tabs.outfits.create">Choose today's outfit</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/outfits.html" type="text/ng-template">
+    <ion-view view-title="Create">
+        <ion-content class="padding">
+            <p>
+                <a class="button icon icon-right ion-chevron-right" ui-sref="tabs.outfits.create">Choose today's outfit</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/outfits-create.html" type="text/ng-template">
+    <ion-view view-title="Outfits">
+        <ion-content class="padding">
+            <h2>Create outfit</h2>
         </ion-content>
     </ion-view>
 </script>
