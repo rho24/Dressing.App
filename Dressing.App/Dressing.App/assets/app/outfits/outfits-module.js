@@ -1,4 +1,4 @@
-﻿angular.module('app.outfits', ['ionic'])
+﻿angular.module('app.items', ['app.dependencies'])
     .config(function($stateProvider) {
         $stateProvider
             .state('tabs.outfits', {

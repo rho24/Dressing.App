@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,7 +12,10 @@
         -->
         <!-- ionic/angularjs js -->
         <script src="assets/ionic-1.0.0-rc.5/release/js/ionic.bundle.min.js"></script>
+        <script src="assets/ionic-1.0.0-rc.5/release/js/angular/angular-resource.min.js"></script>
+        <script src="assets/app/outfits/dependencies-module.js"></script>
         <script src="assets/app/outfits/outfits-module.js"></script>
+        <script src="assets/app/outfits/items-module.js"></script>
         <script src="assets/app/app.js"></script>
     </head>
 
@@ -32,11 +35,57 @@
             <ion-nav-view name="outfits-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Items" icon="ion-ios-information" href="tabs.items">
-            <ion-nav-view name="about-tab"></ion-nav-view>
+        <ion-tab title="Items" icon="ion-ios-information" ui-sref="tabs.items">
+            <ion-nav-view name="items-tab"></ion-nav-view>
         </ion-tab>
 
     </ion-tabs>
+</script>
+
+<script id="templates/items.html" type="text/ng-template">
+    <ion-view view-title="Items">
+        <ion-content class="padding">
+            <p>
+                <a class="button icon icon-right ion-chevron-right" ui-sref="tabs.items.create">Add new item</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/items-create.html" type="text/ng-template">
+    <ion-view view-title="Create item">
+        <ion-content>
+            <form name="itemForm" ng-submit="vm.create()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input type="text" ng-model="vm.item.name">
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Type
+                        </div>
+                        <select ng-model="vm.item.type">
+                            <option>Dress</option>
+                            <option selected>Top</option>
+                            <option>Skirt</option>
+                            <option>Trousers</option>
+                            <option>Trousers</option>
+                        </select>
+                    </label>
+                    <label class="item item-input">
+                        <textarea type="text" placeholder="Description" ng-model="vm.item.description"></textarea>
+                    </label>
+                    <label class="item item-input">
+                        <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
+                    </label>
+                    <button class="button" type="submit">
+                        Add item
+                    </button>
+                </div>
+            </form>
+        </ion-content>
+    </ion-view>
 </script>
 
 <script id="templates/outfits.html" type="text/ng-template">
